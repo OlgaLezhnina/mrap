@@ -2,7 +2,7 @@
 #'
 #' @param method_name A string with the name of a software method
 #'
-#' @return soft_method A sub-schema instance
+#' @return soft_method A soft_method schema instance
 #' @noRd
 #'
 add_soft_method <- function(method_name) {
