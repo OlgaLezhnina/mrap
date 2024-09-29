@@ -14,11 +14,8 @@ add_soft_method <- function(method_name) {
   software <- soft_all$software(label = "R",
                                 versioninfo = version)
   soft_library <- soft_all$software_library(label = method_name,
-                                            part_of = software,
-                                            version_info = version)
-  soft_method <- soft_all$software_method(
-    label = method_name,
-    uses_software = soft_library
-  )
+                                            part_of = software)
+  soft_method <- soft_all$software_method(label = method_name,
+                                          uses_software = soft_library)
   return(soft_method)
 }
