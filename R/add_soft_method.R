@@ -10,7 +10,7 @@ add_soft_method <- function(pack, fun) {
   session <- utils::sessionInfo()
   version_R <-
     paste0(session$R.version$major, ".", session$R.version$minor)
-  version_pack <- utils::packageVersion(pack)
+  version_pack <- as.character(utils::packageVersion(pack))
   method_name <- paste0(pack, "::", fun)
   software <- dt$software(label = "R",
                           versioninfo = version_R)
