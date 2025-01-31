@@ -1,13 +1,13 @@
 #' Add a software method instance
 #'
-#' @param pack_fun A string in format "package_function"
+#' @param pack_fun A string in format "package;function"
 #' @param dt A datatype loaded with the dtreg package
 #'
 #' @return soft_method A soft_method schema instance
 #' @noRd
 #'
 add_soft_method <- function(dt, pack_fun) {
-  parts <- strsplit(pack_fun, split = "_")[[1]]
+  parts <- strsplit(pack_fun, split = ";")[[1]]
   lib <- parts[[1]]
   fun <- parts[[2]]
   session <- utils::sessionInfo()
