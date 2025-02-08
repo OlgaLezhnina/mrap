@@ -1,5 +1,5 @@
 #' Get the name of the data from an ANOVA object
-#' @param aov_object
+#' @param aov_object an R object from function aov package stats
 #' @return the name of the data as a string
 #' @noRd
 #'
@@ -13,7 +13,7 @@ get_data_name <- function(aov_object) {
 }
 
 #' Write JSON-LD from an ANOVA object
-#' @param aov_object
+#' @param aov_object an R object from function aov package stats
 #' @return JSON-LD string
 #' @noRd
 #'
@@ -51,7 +51,7 @@ write_stats_aov <- function(aov_object) {
 
 #' Wrap stats::aov function
 #' @param ... the same arguments as in the wrapped function
-#' @return a list of ANOVA object and JSN-LD
+#' @return a list of ANOVA object and JSON-LD
 #' @export
 #'
 #' @examples
