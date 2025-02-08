@@ -15,9 +15,9 @@ add_soft_method <- function(dt, pack_fun) {
     paste0(session$R.version$major, ".", session$R.version$minor)
   version_lib <- as.character(utils::packageVersion(lib))
   software <- dt$software(label = "R",
-                          versioninfo = version_r)
+                          version_info = version_r)
   soft_library <- dt$software_library(label = lib,
-                                      versioninfo = version_lib,
+                                      version_info = version_lib,
                                       part_of = software)
   soft_method <- dt$software_method(label = fun,
                                     part_of = soft_library)
