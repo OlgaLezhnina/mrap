@@ -4,13 +4,15 @@
 \alias{stats_aov}
 \title{Wrap stats::aov function}
 \usage{
-stats_aov(...)
+stats_aov(..., jsonld = TRUE)
 }
 \arguments{
 \item{...}{the same arguments as in the wrapped function}
+
+\item{jsonld}{Boolean whether the output should be JSON-LD string}
 }
 \value{
-a list of ANOVA object and JSN-LD
+a list of ANOVA object and JSON-LD
 }
 \description{
 Wrap stats::aov function
