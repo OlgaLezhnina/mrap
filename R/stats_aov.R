@@ -26,7 +26,7 @@ write_stats_aov <- function(aov_object, jsonld = TRUE) {
   sum_object <- summary(aov_object)[[1]]
   dt <-
     dtreg::load_datatype("https://doi.org/21.T11969/b9335ce2c99ed87735a6")
-  soft_method <- add_soft_method(dt, "stats;aov")
+  soft_method <- add_soft_method(dt, "stats", "aov")
   soft_method$is_implemented_by <- deparse(aov_object$call)
   dim_input <-
     dt$matrix_size(
