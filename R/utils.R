@@ -6,11 +6,9 @@
 #' @return either an instance or its JSON-LD string
 #' @noRd
 #'
-assign_result <- function(instance, jsonld){
-  if(jsonld == FALSE){
-    result <- instance
-  } else {
-    result <- dtreg::to_jsonld(instance)
+assign_result <- function(instance, jsonld) {
+  if (jsonld) {
+    instance <- dtreg::to_jsonld(instance)
   }
-  return(result)
+  return(instance)
 }
