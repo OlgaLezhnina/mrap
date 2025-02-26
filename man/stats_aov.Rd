@@ -4,7 +4,7 @@
 \alias{stats_aov}
 \title{Wrap stats::aov function}
 \usage{
-stats_aov(..., jsonld = TRUE)
+stats_aov(..., jsonld = FALSE)
 }
 \arguments{
 \item{...}{the same arguments as in the wrapped function}

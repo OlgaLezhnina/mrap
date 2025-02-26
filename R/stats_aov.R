@@ -59,7 +59,7 @@ write_stats_aov <- function(aov_object, jsonld = TRUE) {
 #' @examples
 #' results <- stats_aov(Petal.Length ~ Species, data = iris)
 #'
-stats_aov <- function(..., jsonld = TRUE) {
+stats_aov <- function(..., jsonld = FALSE) {
   call <- match.call()
   aov_object <- stats::aov(...)
   aov_object$call <- call
