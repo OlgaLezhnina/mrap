@@ -12,3 +12,14 @@ assign_result <- function(instance, jsonld) {
   }
   return(instance)
 }
+
+parse_code_string <- function(code_string){
+  result <- list()
+  string_info <- strsplit(code_string, split = "[)(:,~* ]")[[1]]
+  result["pack"] <- string_info[1]
+  result["fun"] <- string_info[3]
+  result["target_name"] <- string_info[4]
+  result["label_name"] <- "todo"
+  result["data_name"] <- tail(string_info, 1)
+  return(result)
+}
