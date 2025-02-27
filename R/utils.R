@@ -13,6 +13,12 @@ assign_result <- function(instance, jsonld) {
   return(instance)
 }
 
+#' Title
+#'
+#' @param code_string a line of code as a string
+#' @return a named list with substrings
+#' @noRd
+#'
 parse_code_string <- function(code_string){
   result <- list()
   string_info <- strsplit(code_string, split = "[)(:,~* ]")[[1]]
