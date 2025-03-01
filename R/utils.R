@@ -16,14 +16,15 @@ check_argument <- function(argument) {
 #' @return a named list with substrings
 #' @noRd
 #'
-parse_code_string <- function(code_string){
+parse_code_string <- function(code_string) {
   result <- list()
-  string_info <- strsplit(code_string, split = "[)(:,~* ]")[[1]]
-  result["pack"] <- string_info[1]
+  groups <- "([\\w.]+)::([\\w.]+)\\(\\s*(.+?)\\s*~\\s*(.+)\\)"
+  string_info <- stringr::str_match(code_string, groups)
+  result["pack"] <- string_info[2]
   result["fun"] <- string_info[3]
   result["target_name"] <- string_info[4]
   result["label_name"] <- "todo"
-  result["data_name"] <- tail(string_info, 1)
+  result["data_name"] <- "change_this"
   return(result)
 }
 
