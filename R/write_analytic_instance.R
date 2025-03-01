@@ -9,12 +9,14 @@
 #' @noRd
 #'
 write_analytic_instance <-
-  function(dt, code_string, input_data, test_results) {
+  function(dt,
+           schema_name,
+           code_string,
+           input_data,
+           test_results) {
     check_argument(code_string)
     check_argument(input_data)
     check_argument(test_results)
-    schema <- dt[length(dt)][[1]]
-    schema_name <- as.character(tail(names(dt), 1))
     parts <- parse_code_string(code_string)
     soft_method <- add_soft_method(dt, parts$pack, parts$fun)
     soft_method$is_implemented_by <- code_string
@@ -22,7 +24,7 @@ write_analytic_instance <-
     input$label  <- parts$data_name
     output <- dt$data_item(label = paste0(schema_name, " results"),
                            source_table = test_results)
-    instance <- schema(
+    instance <- dt[[schema_name]](
       label = schema_name,
       executes = soft_method,
       has_input = input,

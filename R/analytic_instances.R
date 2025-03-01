@@ -12,7 +12,11 @@ group_comparison <- function(code_string, input_data, test_results) {
   dt <-
     dtreg::load_datatype("https://doi.org/21.T11969/b9335ce2c99ed87735a6")
   group_comp_inst <-
-    write_analytic_instance(dt, code_string, input_data, test_results)
+    write_analytic_instance(dt,
+                            "group_comparison",
+                            code_string,
+                            input_data,
+                            test_results)
   parts <- parse_code_string(code_string)
   group_comp_inst$targets <- dt$component(label = parts$target_name)
   return(group_comp_inst)
@@ -28,12 +32,17 @@ group_comparison <- function(code_string, input_data, test_results) {
 #' @export
 #'
 #' @examples
-regression_analysis <- function(code_string, input_data, test_results) {
-  dt <-
-    dtreg::load_datatype("https://doi.org/21.T11969/286991b26f02d58ee490")
-  regress_inst <-
-    write_analytic_instance(dt, code_string, input_data, test_results)
-  parts <- parse_code_string(code_string)
-  regress_inst$targets <- dt$component(label = parts$target_name)
-  return(regress_inst)
-}
+regression_analysis <-
+  function(code_string, input_data, test_results) {
+    dt <-
+      dtreg::load_datatype("https://doi.org/21.T11969/286991b26f02d58ee490")
+    regress_inst <-
+      write_analytic_instance(dt,
+                              "regression_analysis",
+                              code_string,
+                              input_data,
+                              test_results)
+    parts <- parse_code_string(code_string)
+    regress_inst$targets <- dt$component(label = parts$target_name)
+    return(regress_inst)
+  }
