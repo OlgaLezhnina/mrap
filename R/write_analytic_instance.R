@@ -22,7 +22,9 @@ write_analytic_instance <-
     soft_method <- add_soft_method(dt, parts$pack, parts$fun)
     soft_method$is_implemented_by <- code_string
     input <- add_input(dt, input_data)
-    input$label  <- parts$data_name
+    if (!is.list(input)) {
+      input$label  <- parts$data_name
+    }
     output <- dt$data_item(label = paste0(schema_name, " results"),
                            source_table = test_results)
     instance <- dt[[schema_name]](
