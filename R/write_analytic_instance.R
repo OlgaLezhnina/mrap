@@ -19,8 +19,9 @@ write_analytic_instance <-
     check_argument(input_data)
     check_argument(test_results)
     parts <- parse_code_string(code_string)
-    soft_method <- add_soft_method(dt, parts$pack, parts$fun)
-    soft_method$is_implemented_by <- code_string
+    software_method <-
+      add_software_method(dt, parts$pack, parts$fun)
+    software_method$is_implemented_by <- code_string
     input <- add_input(dt, input_data)
     if (!is.list(input)) {
       input$label  <- parts$data_name
@@ -29,7 +30,7 @@ write_analytic_instance <-
                            source_table = test_results)
     instance <- dt[[schema_name]](
       label = schema_name,
-      executes = soft_method,
+      executes = software_method,
       has_input = input,
       has_output = output
     )

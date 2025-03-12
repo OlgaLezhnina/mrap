@@ -25,8 +25,8 @@ write_stats_aov <- function(aov_object) {
   sum_object <- summary(aov_object)[[1]]
   dt <-
     dtreg::load_datatype("https://doi.org/21.T11969/b9335ce2c99ed87735a6")
-  soft_method <- add_soft_method(dt, "stats", "aov")
-  soft_method$is_implemented_by <- deparse(aov_object$call)
+  software_method <- add_software_method(dt, "stats", "aov")
+  software_method$is_implemented_by <- deparse(aov_object$call)
   dim_input <-
     dt$matrix_size(
       number_of_rows = nrow(aov_object$model),
@@ -40,7 +40,7 @@ write_stats_aov <- function(aov_object) {
                          source_table = data.frame(sum_object))
   instance <- dt$group_comparison(
     label = paste0("Anova ", target_name, " vs ", group_name),
-    executes = soft_method,
+    executes = software_method,
     has_input = input,
     targets = target_variable,
     has_output = output
