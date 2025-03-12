@@ -26,8 +26,7 @@ write_analytic_instance <-
     if (!is.list(input)) {
       input$label  <- parts$data_name
     }
-    output <- dt$data_item(label = paste0(schema_name, " results"),
-                           source_table = test_results)
+    output <- add_output(dt, schema_name, test_results)
     instance <- dt[[schema_name]](
       label = schema_name,
       executes = software_method,
