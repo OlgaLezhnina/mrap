@@ -12,13 +12,12 @@ get_data_name <- function(aov_object) {
   return(data_name)
 }
 
-#' Write JSON-LD from an ANOVA object
+#' Write an instance of R6 class from an ANOVA object
 #' @param aov_object an R object from function aov package stats
-#' @param jsonld Boolean whether the output should be JSON-LD string
-#' @return JSON-LD string
+#' @return R6 class instance
 #' @noRd
 #'
-write_stats_aov <- function(aov_object, jsonld = TRUE) {
+write_stats_aov <- function(aov_object) {
   var_names <- names(attributes(aov_object$terms)$dataClasses)
   target_name <- var_names[1]
   group_name <- var_names[2]
@@ -46,24 +45,22 @@ write_stats_aov <- function(aov_object, jsonld = TRUE) {
     targets = target_variable,
     has_output = output
   )
-  result <- assign_result(instance, jsonld)
-  return(result)
+  return(instance)
 }
 
 #' Wrap stats::aov function
 #' @param ... the same arguments as in the wrapped function
-#' @param jsonld Boolean whether the output should be JSON-LD string
-#' @return a list of ANOVA object and JSON-LD
+#' @return a list of ANOVA object and R6 class instance
 #' @export
 #'
 #' @examples
 #' results <- stats_aov(Petal.Length ~ Species, data = iris)
 #'
-stats_aov <- function(..., jsonld = FALSE) {
+stats_aov <- function(...) {
   call <- match.call()
   aov_object <- stats::aov(...)
   aov_object$call <- call
-  dtreg_object <- write_stats_aov(aov_object, jsonld)
+  dtreg_object <- write_stats_aov(aov_object)
   result <- list(aov_object, dtreg_object)
   names(result) <- c("anova", "dtreg_object")
   return(result)
