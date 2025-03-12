@@ -16,7 +16,7 @@ add_input <- function(dt, input_data) {
   } else if (is.list(input_data)) {
     if (is.null(names(input_data))) {
       stop("You input_data list should be named. See 'named list in R'.")
-    } else{
+    } else {
       inputs <- list()
       for (name in names(input_data)) {
         dimensions_inp <- dt$matrix_size(
