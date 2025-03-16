@@ -17,13 +17,25 @@ check_argument <- function(argument) {
 #' @noRd
 #'
 parse_code_string <- function(code_string) {
-  result <- list()
-  groups <- "([\\w.]+)::([\\w.]+)\\(\\s*(.+?)\\s*~\\s*(.+)\\)"
-  string_info <- stringr::str_match(code_string, groups)
-  result["pack"] <- string_info[2]
-  result["fun"] <- string_info[3]
-  result["target_name"] <- string_info[4]
-  result["label_name"] <- "todo"
-  result["data_name"] <- "change_this"
+  if (!is.character(code_string) ||
+        !stringr::str_detect(code_string, "::")) {
+    stop("Argument code_string should be a string containing package::function")
+  } else {
+    result <- list()
+    first_split <-
+      stringr::str_match(code_string, "([\\w.]+)::([\\w.]+)\\((.+)\\)")
+    result["pack"] <- first_split[2]
+    result["fun"] <- first_split[3]
+    internal_args <- first_split[4]
+    result["data_name"] <-
+      stringr::str_match(internal_args, "data\\s*=\\s*([\\w.]+)")[2]
+    result["level_name"] <-
+      stringr::str_match(internal_args, "\\|\\s*([\\w.]+)")[2]
+    if (stringr::str_detect(internal_args, "~")) {
+      result["target_name"] <- "TODO1"
+    } else {
+      result["target_name"] <- "TODO2"
+    }
+  }
   return(result)
 }
