@@ -21,10 +21,14 @@ find_target_name <- function(argument_string) {
     stringr::str_replace_all(argument_string, fixed(" "), "")
   if (stringr::str_detect(without_blanks, "~")) {
     target_group <- stringr::str_match(without_blanks, "(.*)~")[2]
-    split_args <- stringr::str_split(target_group, "\\(|,|\\)")[[1]]
-    if (length(split_args) == 1) {
-      target_name <- split_args
-    } else if (split_args[1] == "cbind") {
+    split_targets <- stringr::str_split(target_group, "\\(|,|\\)")[[1]]
+    if (length(split_targets) == 1) {
+      if (stringr::str_detect(split_targets, "\\$")) {
+        target_name <- stringr::str_match(split_targets, "\\$(.*)")[2]
+      } else {
+        target_name <- split_targets
+      }
+    } else if (split_targets[1] == "cbind") {
       target_name <- "TODO with a list"
     } else {
       stop("Something went wrong, contact the developers")
