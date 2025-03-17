@@ -18,7 +18,12 @@ group_comparison <- function(code_string, input_data, test_results) {
                             input_data,
                             test_results)
   parts <- parse_code_string(code_string)
-  group_comp_inst$targets <- dt$component(label = parts$target_name)
+  target_name <- parts$target_name
+  if (is.na(target_name)) {
+    warning("Target name cannot be detected, please add it to the instance",
+            call. = FALSE)
+  }
+  group_comp_inst$targets <- dt$component(label = target_name)
   return(group_comp_inst)
 }
 

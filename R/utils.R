@@ -12,6 +12,31 @@ check_argument <- function(argument) {
 
 #' Title
 #'
+#' @param argument_string a substring of the code_string
+#' @return target_name as a string
+#' @noRd
+#
+find_target_name <- function(argument_string) {
+  without_blanks <-
+    stringr::str_replace_all(argument_string, fixed(" "), "")
+  if (stringr::str_detect(without_blanks, "~")) {
+    target_group <- stringr::str_match(without_blanks, "(.*)~")[2]
+    split_args <- stringr::str_split(target_group, "\\(|,|\\)")[[1]]
+    if (length(split_args) == 1) {
+      target_name <- split_args
+    } else if (split_args[1] == "cbind") {
+      target_name <- "TODO with a list"
+    } else {
+      stop("Something went wrong, contact the developers")
+    }
+  } else {
+    target_name <- NA
+  }
+  return(target_name)
+}
+
+#' Title
+#'
 #' @param code_string a line of code as a string
 #' @return a named list with substrings
 #' @noRd
@@ -31,11 +56,7 @@ parse_code_string <- function(code_string) {
       stringr::str_match(internal_args, "data\\s*=\\s*([\\w.]+)")[2]
     result["level_name"] <-
       stringr::str_match(internal_args, "\\|\\s*([\\w.]+)")[2]
-    if (stringr::str_detect(internal_args, "~")) {
-      result["target_name"] <- "TODO1"
-    } else {
-      result["target_name"] <- "TODO2"
-    }
+    result["target_name"] <- find_target_name(internal_args)
   }
   return(result)
 }
