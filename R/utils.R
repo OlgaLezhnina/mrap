@@ -18,7 +18,7 @@ check_argument <- function(argument) {
 #
 find_target_name <- function(argument_string) {
   without_blanks <-
-    stringr::str_replace_all(argument_string, fixed(" "), "")
+    stringr::str_replace_all(argument_string, " ", "")
   if (stringr::str_detect(without_blanks, "~")) {
     target_group <- stringr::str_match(without_blanks, "(.*)~")[2]
     split_targets <-
