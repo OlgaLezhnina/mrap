@@ -21,7 +21,8 @@ find_target_name <- function(argument_string) {
     stringr::str_replace_all(argument_string, fixed(" "), "")
   if (stringr::str_detect(without_blanks, "~")) {
     target_group <- stringr::str_match(without_blanks, "(.*)~")[2]
-    split_targets <- stringr::str_split(target_group, "\\(|,|\\)")[[1]]
+    split_targets <-
+      stringr::str_split(target_group, "\\(|,|\\)")[[1]]
     if (length(split_targets) == 1) {
       if (stringr::str_detect(split_targets, "\\$")) {
         target_name <- stringr::str_match(split_targets, "\\$(.*)")[2]
@@ -34,7 +35,14 @@ find_target_name <- function(argument_string) {
       stop("Something went wrong, contact the developers")
     }
   } else {
-    target_name <- NA
+    splits <- stringr::str_split(without_blanks, ",")[[1]]
+    if (!is.na(stringr::str_match(splits[1], "\\$(.*)")[2]) &&
+          stringr::str_match(splits[1], "\\$(.*)")[2] ==
+            stringr::str_match(splits[2], "\\$(.*)")[2]) {
+      target_name <- stringr::str_match(splits[1], "\\$(.*)")[2]
+    } else {
+      target_name <- NA
+    }
   }
   return(target_name)
 }
