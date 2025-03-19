@@ -17,7 +17,6 @@ group_comparison <- function(code_string, input_data, test_results) {
                             code_string,
                             input_data,
                             test_results)
-  parts <- parse_code_string(code_string)
   group_comp_inst$targets <- add_target(dt, code_string)
   return(group_comp_inst)
 }

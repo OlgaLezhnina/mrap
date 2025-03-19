@@ -30,7 +30,7 @@ find_target_name <- function(argument_string) {
         target_name <- split_targets
       }
     } else if (split_targets[1] == "cbind") {
-      target_name <- "TODO with a list"
+      target_name <- as.list(split_targets[3:length(split_targets) - 1])
     } else {
       stop("Something went wrong, contact the developers")
     }
@@ -61,14 +61,14 @@ parse_code_string <- function(code_string) {
     result <- list()
     first_split <-
       stringr::str_match(code_string, "([\\w.]+)::([\\w.]+)\\((.+)\\)")
-    result["pack"] <- first_split[2]
-    result["fun"] <- first_split[3]
+    result[["pack"]] <- first_split[2]
+    result[["fun"]] <- first_split[3]
     internal_args <- first_split[4]
-    result["data_name"] <-
+    result[["data_name"]] <-
       stringr::str_match(internal_args, "data\\s*=\\s*([\\w.]+)")[2]
-    result["level_name"] <-
+    result[["level_name"]] <-
       stringr::str_match(internal_args, "\\|\\s*([\\w.]+)")[2]
-    result["target_name"] <- find_target_name(internal_args)
+    result[["target_name"]] <- find_target_name(internal_args)
   }
   return(result)
 }
