@@ -30,6 +30,8 @@ from mrap.
 library(mrap)
 ## get the data
 attach(iris)
+virginica <- iris[iris$Species== "virginica", ]
+versicolor <- iris[iris$Species== "versicolor", ]
 ## run the test
 my_anova <- stats::aov(Petal.Length ~ Species, iris)
 ## write the results as a data frame
@@ -48,8 +50,10 @@ my_json <- dtreg::to_jsonld(my_instance)
 Such wrappers as group_comparison have three arguments: code_string,
 input_data, and test_results.
 
-- Argument code_string should be a string(in R, a character vector) and
-  include package::function notation.
+- Argument code_string should be a string (in R, a character vector) and
+  include package::function notation. It usually starts the string
+  ‘package::function(formula)’, but we also allow for generic method
+  summary, then it can be ‘summary(package::function(formula))’.
 
 - In code_string, the data label should be specified as “data = iris”,
   not just “iris”. Not specifying the data label is acceptable, please
@@ -57,15 +61,34 @@ input_data, and test_results.
 
 - In code_string, target variable is recognized by our wrappers before
   the ~ sign in the formula (strings a, b, and c) or when explicitly
-  specified in two or more vectors (string d). Otherwise (strings e
-  or f) you will get a warning reminding to add the target name
-  manually.
+  specified in two or more vectors (string d). Otherwise, you will get a
+  warning reminding to add the target label manually to the instance
+  (strings e and f).
 
 ``` r
 ## (a) "package::function(Petal.Length ~ Species), data = iris"
 ## (b) "package::function(iris$Petal.Length ~ iris$Species), data = iris"
 ## (c) "package::function(cbind(Petal.Length, Petal.Width) ~ Species), data = iris"
-## (d) "package::function(setosa$Petal.Length, virginica$Petal.Length, versicolor$Petal.Length)"
+## (d) "package::function(setosa$Petal.Length, virginica$Petal.Length)"
 ## (e) "package::function(one_vector, another_vector)"
 ## (f) "package::function(data_1$one_vector, data_2$another_vector)"
+```
+
+- In code_string, level variable is recognized by our wrappers in
+  x\|level notation. TODO.
+
+- Argument input_data should be either a data frame or a named list.
+
+``` r
+# if you have a data frame, check it
+is.data.frame(iris)
+#> [1] TRUE
+# for a few vectors or data frames, create a named list
+species_list <- list("virginica" = virginica, "versicolor" = versicolor)
+# check it is a list
+is.list(species_list)
+#> [1] TRUE
+# check the names
+names(species_list)
+#> [1] "virginica"  "versicolor"
 ```
