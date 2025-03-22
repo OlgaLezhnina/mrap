@@ -22,23 +22,20 @@ find_target_name <- function(argument_string) {
   if (stringr::str_detect(without_blanks, "~")) {
     target_group <- stringr::str_match(without_blanks, "(.*)~")[2]
     split_targets <-
-      stringr::str_split(target_group, "\\(|,|\\)")[[1]]
+      stringr::str_split(target_group, "[(),]")[[1]]
     if (length(split_targets) == 1) {
-      if (stringr::str_detect(split_targets, "\\$")) {
-        target_name <- stringr::str_match(split_targets, "\\$(.*)")[2]
-      } else {
-        target_name <- split_targets
-      }
+      target_name <-
+        stringr::str_match(split_targets, "(?:.*\\$)?(.*)")[2]
     } else if (split_targets[1] == "cbind") {
-      target_name <- as.list(split_targets[3:length(split_targets) - 1])
+      target_name <- as.list(split_targets[2:(length(split_targets) - 1)])
     } else {
       stop("Something went wrong, contact the developers")
     }
   } else {
     splits <- stringr::str_split(without_blanks, ",")[[1]]
     if (!is.na(stringr::str_match(splits[1], "\\$(.*)")[2]) &&
-          stringr::str_match(splits[1], "\\$(.*)")[2] ==
-            stringr::str_match(splits[2], "\\$(.*)")[2]) {
+        stringr::str_match(splits[1], "\\$(.*)")[2] ==
+        stringr::str_match(splits[2], "\\$(.*)")[2]) {
       target_name <- stringr::str_match(splits[1], "\\$(.*)")[2]
     } else {
       target_name <- NA
@@ -55,20 +52,19 @@ find_target_name <- function(argument_string) {
 #'
 parse_code_string <- function(code_string) {
   if (!is.character(code_string) ||
-        !stringr::str_detect(code_string, "::")) {
+      !stringr::str_detect(code_string, "::")) {
     stop("Argument code_string should be a string containing package::function")
-  } else {
-    result <- list()
-    first_split <-
-      stringr::str_match(code_string, "([\\w.]+)::([\\w.]+)\\((.+)\\)")
-    result[["pack"]] <- first_split[2]
-    result[["fun"]] <- first_split[3]
-    internal_args <- first_split[4]
-    result[["data_name"]] <-
-      stringr::str_match(internal_args, "data\\s*=\\s*([\\w.]+)")[2]
-    result[["level_name"]] <-
-      stringr::str_match(internal_args, "\\|\\s*([\\w.]+)")[2]
-    result[["target_name"]] <- find_target_name(internal_args)
   }
+  result <- list()
+  first_split <-
+    stringr::str_match(code_string, "([\\w.]+)::([\\w.]+)\\((.+)\\)")
+  result[["pack"]] <- first_split[2]
+  result[["fun"]] <- first_split[3]
+  internal_args <- first_split[4]
+  result[["data_name"]] <-
+    stringr::str_match(internal_args, "data\\s*=\\s*([\\w.]+)")[2]
+  result[["level_name"]] <-
+    stringr::str_match(internal_args, "\\|\\s*([\\w.]+)")[2]
+  result[["target_name"]] <- find_target_name(internal_args)
   return(result)
 }
