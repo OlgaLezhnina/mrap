@@ -24,7 +24,8 @@ devtools::install_github("OlgaLezhnina/mrap_R")
 For instance, you have results of ANOVA on Iris data. On the help page,
 you see that the group_comparison schema should be used. Instead of
 writing the data manually with dtreg, use the group_comparison function
-from mrap.
+from mrap. Arguments code_string, input_data, and test_results should be
+provided. For more details, see [Required Arguments](#section1) below.
 
 ``` r
 library(mrap)
@@ -47,8 +48,7 @@ my_instance$label <- "ANOVA for Iris petal length"
 my_json <- dtreg::to_jsonld(my_instance)
 ```
 
-Such wrappers as group_comparison have three arguments: code_string,
-input_data, and test_results.
+### Required arguments
 
 - Argument code_string should be a string (in R, a character vector) and
   include package::function notation. It usually starts the string
