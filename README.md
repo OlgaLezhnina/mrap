@@ -7,7 +7,7 @@
 <!-- badges: end -->
 
 The goal of mrap is to provide wrapper functions to reduce the user’s
-effort in writing machine-reusable data.
+effort in writing machine-readable data.
 
 ## Installation
 

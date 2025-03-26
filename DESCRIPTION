@@ -1,5 +1,5 @@
 Package: mrap
-Title: Machine-Reusable Data Analysis Results with Function Wrappers
+Title: Machine-Readable Data Analysis Results with Function Wrappers
 Version: 0.0.0.9000
 Authors@R: c(
     person("Olga", "Lezhnina", , "olga.lezhnina@tib.eu", role = c("aut", "cre"),
