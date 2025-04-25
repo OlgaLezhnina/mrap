@@ -48,7 +48,7 @@ Argument ``code_string`` should be a string (in R, a character vector). The argu
 To specify the name of the package in the code is always a good practice. In mrap, we made it a requirement, and you will get an error message if the ``code_string`` does not contain 'package::function'. In most cases, it is the beginning of the string, but we allow for generic method summary, in this case it is 'summary(package::function(formula))'. For base R, please indicate 'base::'.  
 
 ##### Data name
-If you want mrap to extract the data name from the ``code_string``, please indicate it as 'data = my_name', although many R packages also allow for merely 'my_name'. If the data name is not deteced, it can be added manually to the instance (see Modify the instance). 
+If you want mrap to extract the data name from the ``code_string``, please indicate it as 'data = my_name', although many R packages also allow for merely 'my_name'. If the data name is not detected, it can be added manually to the instance (see Modify the instance). 
 
 ##### Target variable(s)
 Our wrappers extract the name of a target variable from the ``code_string`` if the variable is before the '~' sign in the formula:
@@ -68,7 +68,7 @@ Alternatively, a target variable can be explicitly specified in two or more vect
 ```{r}
 "package::function(setosa$Petal.Length, virginica$Petal.Length)"
 ```
-In the case below we cannot extract the name, and you can add the target label manually to the instance: 
+In the following case we cannot extract the name, and you can add the target label manually to the instance: 
 
 ```{r}
 "package::function(one_vector, another_vector)"
@@ -99,6 +99,6 @@ is.list(species_list)
 # check the names
 names(species_list)
 ```
-Please be sure that the argument is one of these three types. You will get an error message if a type is wrong(for instance, a list instead of a named list).
+Please be sure that the argument is one of these three types. You will get an error message if a type is wrong (for instance, a list instead of a named list).
 
 #### 2.3. Test results
