@@ -18,6 +18,8 @@ group_comparison <- function(code_string, input_data, test_results) {
                             input_data,
                             test_results)
   group_comp_inst$targets <- add_target(dt, code_string)
+  group_comp_inst$has_output <-
+    add_generic_output(dt, "group_comparison", test_results)
   return(group_comp_inst)
 }
 
@@ -43,5 +45,7 @@ regression_analysis <-
                               test_results)
     parts <- parse_code_string(code_string)
     regress_inst$targets <- dt$component(label = parts$target_name)
+    regress_inst$has_output <-
+      add_generic_output(dt, "regression_analysis", test_results)
     return(regress_inst)
   }

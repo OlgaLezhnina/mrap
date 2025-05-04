@@ -7,7 +7,7 @@
 #' @return instance of data_item class
 #' @noRd
 #'
-add_output <- function(dt, schema_name, test_results) {
+add_generic_output <- function(dt, schema_name, test_results) {
   output <- dt$data_item(label = paste0(schema_name, " results"),
                          source_table = test_results)
   return(output)

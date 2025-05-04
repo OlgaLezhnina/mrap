@@ -26,12 +26,10 @@ write_analytic_instance <-
     if (!is.list(input)) {
       input$label  <- parts$data_name
     }
-    output <- add_output(dt, schema_name, test_results)
     instance <- dt[[schema_name]](
       label = schema_name,
       executes = software_method,
-      has_input = input,
-      has_output = output
+      has_input = input
     )
     return(instance)
   }
