@@ -13,11 +13,9 @@ write_analytic_instance <-
   function(dt,
            schema_name,
            code_string,
-           input_data,
-           test_results) {
+           input_data) {
     check_argument(code_string)
     check_argument(input_data)
-    check_argument(test_results)
     parts <- parse_code_string(code_string)
     software_method <-
       add_software_method(dt, parts$pack, parts$fun)
@@ -26,10 +24,8 @@ write_analytic_instance <-
     if (!is.list(input)) {
       input$label  <- parts$data_name
     }
-    instance <- dt[[schema_name]](
-      label = schema_name,
-      executes = software_method,
-      has_input = input
-    )
+    instance <- dt[[schema_name]](label = schema_name,
+                                  executes = software_method,
+                                  has_input = input)
     return(instance)
   }
