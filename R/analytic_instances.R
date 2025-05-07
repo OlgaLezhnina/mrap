@@ -20,10 +20,9 @@ algorithm_evaluation <-
                               code_string,
                               input_data)
     algorithm_evaluation_inst$has_output <-
-      add_evaluation_output(dt, "algorithm_evaluation_inst", named_list_results)
-    return(group_comp_inst)
+      add_evaluation_output(dt, named_list_results)
+    return(algorithm_evaluation_inst)
   }
-
 
 #' Title
 #'
