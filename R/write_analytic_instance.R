@@ -4,7 +4,6 @@
 #' @param schema_name the name of an analytic schema as a string
 #' @param code_string a line of code as a string
 #' @param input_data an input data frame, or a list of data frames
-#' @param test_results a resulting data frame, or a list of data frames
 #'
 #' @return an instance of any analytic class
 #' @noRd
