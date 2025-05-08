@@ -28,8 +28,10 @@ add_input <- function(dt, input_data) {
         inputs <- append(inputs, inp_inst)
       }
     }
+  } else if (is.character(input_data)) {
+    inputs <- dt$data_item(source_url = input_data)
   } else {
-    stop("Argument data_input should be either a dataframe or a list")
+    stop("Argument data_input should be a dataframe, a named list, or a string")
   }
   return(inputs)
 }
