@@ -21,7 +21,7 @@ library(mrap)
 
 The goal of mrap is to provide wrapper functions to reduce the user's effort 
 in writing machine-readable data with the [dtreg package](https://cran.r-project.org/package=dtreg).
-The growing set of wrappers covers functions from stats and other widely used packages.
+The growing set of wrappers covers functions from  ``stats`` and other widely used packages.
 Mrap also contains wrappers for analytical schemata 
 used in the [ORKG-reborn approach](https://reborn.orkg.org/pages/help).
 
@@ -42,16 +42,16 @@ To write the results of your data analysis as JSON-LD:
 ## 2. Check arguments
 
 #### 2.1. Code string
-Argument ``code_string`` should be a string (in R, a character vector). The argument cannot be omitted; please indicate 'N/A' if this information is not provided.   
+Argument ``code_string`` should be a string (in R, a character vector). The argument cannot be omitted; please indicate  ``'N/A'`` if this information is not provided.   
 
 ##### Package name
-To specify the name of the package in the code is always a good practice. In mrap, we made it a requirement, and you will get an error message if the ``code_string`` does not contain 'package::function'. In most cases, it is the beginning of the string, but we allow for generic method summary, in this case it is 'summary(package::function(formula))'. For base R, please indicate 'base::'.  
+To specify the name of the package in the code is always a good practice. In mrap, we made it a requirement, and you will get an error message if the ``code_string`` does not contain  ``package::function``. In most cases, it is the beginning of the string, but we allow for generic method summary, in this case it is ``summary(package::function(formula))``. For base R, please indicate ``base::``.  
 
 ##### Data name
-If you want mrap to extract the data name from the ``code_string``, please indicate it as 'data = my_name', although many R packages also allow for merely 'my_name'. If the data name is not detected, it can be added manually to the instance (see Modify the instance). 
+If you want mrap to extract the data name from the ``code_string``, please indicate it as ``'data = dataset_name'``, although many R packages also allow for merely ``dataset_name``. If the data name is not detected, it can be added manually to the instance (see Modify the instance). 
 
 ##### Target variable(s)
-Our wrappers extract the name of a target variable from the ``code_string`` if the variable is before the '~' sign in the formula:
+Our wrappers extract the name of a target variable from the ``code_string`` if the variable is before the ``~`` sign in the formula:
 
 ```{r}
 "package::function(Petal.Length ~ Species), data = iris"
@@ -73,7 +73,7 @@ In the following case we cannot extract the name, and you can add the target lab
 ```{r}
 "package::function(one_vector, another_vector)"
 ```
-You will get a warning reminding to do it, which can be safely ignored. 
+You will get a warning reminding to do it. 
 
 ##### Level variable(s)
 In ``code_string``, level variable is recognized by our wrappers in x|level notation. TODO.
@@ -84,10 +84,13 @@ Argument ``input_data`` can be:
 
 * a string, which is either a file name or a URL
 
+```{r}
+is.character("ABC")
+```
+
 * a dataframe
 
 ```{r}
-# if you have a data frame, check it
 is.data.frame(iris)
 ```
 * a named list for a few vectors or data frames:
@@ -96,9 +99,28 @@ is.data.frame(iris)
 species_list <- list("virginica" = virginica, "versicolor" = versicolor)
 # check it is a list
 is.list(species_list)
-# check the names
+# check that the list is named
 names(species_list)
 ```
 Please be sure that the argument is one of these three types. You will get an error message if a type is wrong (for instance, a list instead of a named list).
 
-#### 2.3. Test results
+#### 2.3. Test results or named list results
+
+Argument ``test_results`` can be either a data frame or a list of data frames.
+You can check whether you are writing down the argument correctly. For a data frame:
+
+```{r}
+is.data.frame(iris)
+```
+ For a list of data frames:
+
+```{r}
+# assume you have a few data frames in a list
+iris_new <- iris[, -1]
+my_results <- list(iris, iris_new)
+# check each of them in a loop
+for (element in my_results) {
+  print(is.data.frame(element))
+}
+``` 
+Argument ``named_list_results`` is only used for the ``algorithm_evaluation`` schema.
