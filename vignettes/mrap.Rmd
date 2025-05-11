@@ -21,11 +21,9 @@ library(mrap)
 
 The goal of mrap is to provide wrapper functions to reduce the user's effort 
 in writing machine-readable data with the [dtreg package](https://cran.r-project.org/package=dtreg).
-The growing set of wrappers covers functions from  ``stats`` and other widely used packages.
+The growing set of all-in-one wrappers covers functions from  ``stats`` and other well-known packages. These are very easy to use, see [Example III: an all-in-one wrapper for anova](#section1).
 Mrap also contains wrappers for analytical schemata 
-used in the [ORKG-reborn approach](https://reborn.orkg.org/pages/help).
-
-To write the results of your data analysis as JSON-LD:
+used in the [ORKG-reborn approach](https://reborn.orkg.org/pages/help). This vignette discusses in detail how to apply such a wrapper to write the results of your data analysis as JSON-LD in five steps: 
 
 * Select a wrapper for the schema you will use.
 
@@ -124,3 +122,10 @@ for (element in my_results) {
 }
 ``` 
 Argument ``named_list_results`` is only used for the ``algorithm_evaluation`` schema.
+
+## 3. Create an instance
+## 4. Modify the instance
+## 5. Write JSON-LD with dtreg
+## Example I: group comparison
+## Example II: algorithm evaluation
+## Example III: an all-in-one wrapper for anova {#section1}
