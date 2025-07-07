@@ -1,5 +1,22 @@
 #' Title
 #'
+#' @param instances analytic instance or a list of instances
+#' @param code_reference a URL of the code implementing data analysis
+#'
+#' @return an instance of data analysis class
+#' @export
+#'
+#' @examples
+data_analysis <-
+  function(instances, code_reference) {
+    dt <-
+      dtreg::load_datatype("https://doi.org/21.T11969/feeb33ad3e4440682a4d")
+    data_analysis_inst <- dt$data_analysis(has_part = instances,
+                                           is_implemented_by = code_reference)
+    return(data_analysis_inst)
+  }
+#' Title
+#'
 #' @param code_string a line of code as a string
 #' @param input_data an input data frame, or a list of data frames
 #' @param test_results a resulting data frame, or a list of data frames
