@@ -4,7 +4,7 @@
 \alias{data_analysis}
 \title{Title}
 \usage{
-data_analysis(instances, code_reference)
+data_analysis(instances, code_reference = NULL)
 }
 \arguments{
 \item{instances}{analytic instance or a list of instances}

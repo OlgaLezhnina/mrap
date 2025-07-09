@@ -8,7 +8,7 @@
 #'
 #' @examples
 data_analysis <-
-  function(instances, code_reference) {
+  function(instances, code_reference = NULL) {
     dt <-
       dtreg::load_datatype("https://doi.org/21.T11969/feeb33ad3e4440682a4d")
     data_analysis_inst <- dt$data_analysis(has_part = instances,
