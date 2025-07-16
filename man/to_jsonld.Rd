@@ -2,10 +2,16 @@
 % Please edit documentation in R/to_jsonld.R
 \name{to_jsonld}
 \alias{to_jsonld}
-\title{Wrapper for dtreg function to_jsonld}
+\title{Write an instance in JSON-LD format}
 \usage{
 to_jsonld(instance)
 }
+\arguments{
+\item{instance}{An instance of an R6 class}
+}
+\value{
+JSON string in JSON-LD format
+}
 \description{
-Wrapper for dtreg function to_jsonld
+This function is imported from dtreg for ease-of-use
 }

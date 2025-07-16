@@ -18,6 +18,7 @@ RoxygenNote: 7.2.3
 URL: https://github.com/OlgaLezhnina/mrap_R
 Imports:
     dtreg,
+    jsonlite,
     stringr
 Suggests: 
     knitr,
