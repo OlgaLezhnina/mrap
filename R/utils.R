@@ -1,7 +1,7 @@
-#' Title
+#' Check that arguments as not missing
 #'
-#' @param argument an argument of a function
-#' @return an error message or none
+#' @param argument An argument of a function
+#' @return An error message if missing
 #' @noRd
 #'
 check_argument <- function(argument) {
@@ -10,10 +10,10 @@ check_argument <- function(argument) {
   }
 }
 
-#' Title
+#' Get target_name for parse_code_string function
 #'
-#' @param argument_string a substring of the code_string
-#' @return target_name as a string
+#' @param argument_string A substring of the code_string
+#' @return A target_name as a string, or as a list if more than one
 #' @noRd
 #
 find_target_name <- function(argument_string) {
@@ -43,10 +43,10 @@ find_target_name <- function(argument_string) {
   return(target_name)
 }
 
-#' Title
+#' Parse code_string to get names it contains
 #'
-#' @param code_string a line of code as a string
-#' @return a named list with substrings
+#' @param code_string A line of code as a string
+#' @return A named list with strings
 #' @noRd
 #'
 parse_code_string <- function(code_string) {

@@ -1,8 +1,8 @@
-#' Title
+#' Write an input instance to be used by other instances
 #'
 #' @param dt A datatype loaded with the dtreg package
-#' @param input_data a dataframe or a list
-#' @return an instance of input class
+#' @param input_data A data frame, a named list, or a URL as a string
+#' @return An input instance
 #' @noRd
 #'
 add_input <- function(dt, input_data) {

@@ -1,8 +1,8 @@
-#' Title
+#' Write a target component instance
 #'
 #' @param dt A datatype loaded with the dtreg package
-#' @param code_string a line of code as a string
-#' @return a target component instance
+#' @param code_string A line of code as a string
+#' @return A target component instance
 #' @noRd
 #'
 add_target <- function(dt, code_string) {

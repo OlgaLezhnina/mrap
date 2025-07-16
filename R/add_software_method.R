@@ -4,7 +4,7 @@
 #' @param pack A string package name
 #' @param fun A string function name
 #'
-#' @return software_method A software_method schema instance
+#' @return A software_method instance
 #' @noRd
 #'
 add_software_method <- function(dt, pack, fun) {

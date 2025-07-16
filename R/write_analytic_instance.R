@@ -1,11 +1,11 @@
-#' Title
+#' Write a generic part of analytic instances
 #'
-#' @param dt a datatype loaded with the dtreg package
-#' @param schema_name the name of an analytic schema as a string
-#' @param code_string a line of code as a string
-#' @param input_data an input data frame, or a list of data frames
+#' @param dt A datatype loaded with the dtreg package
+#' @param schema_name An analytic schema name as a string
+#' @param code_string A line of code as a string
+#' @param input_data A data frame, a named list, or a URL as a string
 #'
-#' @return an instance of any analytic class
+#' @return A generic instance to be used by any analytic instance
 #' @noRd
 #'
 write_analytic_instance <-

@@ -1,10 +1,10 @@
-#' Title
+#' Write a generic output instance to be used by other instances
 #'
-#' @param dt  a datatype loaded with the dtreg package
-#' @param schema_name the name of an analytic schema as a string
-#' @param test_results a resulting data frame, or a list of data frames
+#' @param dt  A datatype loaded with the dtreg package
+#' @param schema_name The name of an analytic schema as a string
+#' @param test_results A resulting data frame, or a list of data frames
 #'
-#' @return instance of data_item class
+#' @return A generic output instance
 #' @noRd
 #'
 add_generic_output <- function(dt, schema_name, test_results) {
@@ -13,12 +13,12 @@ add_generic_output <- function(dt, schema_name, test_results) {
   return(output)
 }
 
-#' Title
+#' Write an algorithm_evaluation output instance to be used by other instances
 #'
-#' @param dt  a datatype loaded with the dtreg package
-#' @param named_list_results a named list with metrics and values
+#' @param dt  A datatype loaded with the dtreg package
+#' @param named_list_results A named list with metrics and values
 #'
-#' @return instance of data_item class
+#' @return An algorithm_evaluation output instance
 #' @noRd
 #'
 add_evaluation_output <- function(dt, named_list_results) {

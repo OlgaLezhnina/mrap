@@ -1,9 +1,9 @@
-#' Title
+#' Create a data_analysis instance
 #'
-#' @param instances analytic instance or a list of instances
-#' @param code_reference a URL of the code implementing data analysis
+#' @param instances Analytic instance or a list of instances
+#' @param code_reference A URL of the code implementing data analysis
 #'
-#' @return an instance of data analysis class
+#' @return A data analysis instance
 #' @export
 #'
 #' @examples
@@ -15,13 +15,13 @@ data_analysis <-
                                            is_implemented_by = code_reference)
     return(data_analysis_inst)
   }
-#' Title
+#' Create a descriptive_statistics instance
 #'
-#' @param code_string a line of code as a string
-#' @param input_data an input data frame, or a list of data frames
-#' @param test_results a resulting data frame, or a list of data frames
+#' @param code_string A line of code as a string
+#' @param input_data A data frame, a named list, or a URL as a string
+#' @param test_results A data frame or a list of data frames
 #'
-#' @return an instance of regression_analysis class
+#' @return A descriptive_statistics instance
 #' @export
 #'
 #' @examples
@@ -39,13 +39,13 @@ descriptive_statistics <-
     return(descriptive_stats_inst)
   }
 
-#' Title
+#' Create an algorithm_evaluation instance
 #'
-#' @param code_string a line of code as a string
-#' @param input_data an input data frame, or a list of data frames
-#' @param named_list_results a named list with metrics and values
+#' @param code_string A line of code as a string
+#' @param input_data A data frame, a named list, or a URL as a string
+#' @param named_list_results A named list with metrics and values
 #'
-#' @return an instance of group_comparison class
+#' @return An algorithm_evaluation instance
 #' @export
 #'
 #' @examples
@@ -65,13 +65,13 @@ algorithm_evaluation <-
     return(algorithm_evaluation_inst)
   }
 
-#' Title
+#' Create a multilevel_analysis instance
 #'
-#' @param code_string a line of code as a string
-#' @param input_data an input data frame, or a list of data frames
-#' @param test_results a resulting data frame, or a list of data frames
+#' @param code_string A line of code as a string
+#' @param input_data A data frame, a named list, or a URL as a string
+#' @param test_results A data frame or a list of data frames
 #'
-#' @return an instance of regression_analysis class
+#' @return A multilevel_analysis instance
 #' @export
 #'
 #' @examples
@@ -92,13 +92,13 @@ multilevel_analysis <-
     return(mult_analysis_inst)
   }
 
-#' Title
+#' Create a correlation_analysis instance
 #'
-#' @param code_string a line of code as a string
-#' @param input_data an input data frame, or a list of data frames
-#' @param test_results a resulting data frame, or a list of data frames
+#' @param code_string A line of code as a string
+#' @param input_data A data frame, a named list, or a URL as a string
+#' @param test_results A data frame or a list of data frames
 #'
-#' @return an instance of regression_analysis class
+#' @return A correlation_analysis instance
 #' @export
 #'
 #' @examples
@@ -117,13 +117,13 @@ correlation_analysis <-
   }
 
 
-#' Title
+#' Create a group_comparison instance
 #'
-#' @param code_string a line of code as a string
-#' @param input_data an input data frame, or a list of data frames
-#' @param test_results a resulting data frame, or a list of data frames
+#' @param code_string A line of code as a string
+#' @param input_data A data frame, a named list, or a URL as a string
+#' @param test_results A data frame or a list of data frames
 #'
-#' @return an instance of group_comparison class
+#' @return A group_comparison instance
 #' @export
 #'
 #' @examples
@@ -141,13 +141,13 @@ group_comparison <- function(code_string, input_data, test_results) {
   return(group_comparison_inst)
 }
 
-#' Title
+#' Create a regression_analysis instance
 #'
-#' @param code_string a line of code as a string
-#' @param input_data an input data frame, or a list of data frames
-#' @param test_results a resulting data frame, or a list of data frames
+#' @param code_string A line of code as a string
+#' @param input_data A data frame, a named list, or a URL as a string
+#' @param test_results A data frame or a list of data frames
 #'
-#' @return an instance of regression_analysis class
+#' @return A regression_analysis instance
 #' @export
 #'
 #' @examples
@@ -168,13 +168,13 @@ regression_analysis <-
     return(regr_analysis_inst)
   }
 
-#' Title
+#' Create a class_prediction instance
 #'
-#' @param code_string a line of code as a string
-#' @param input_data an input data frame, or a list of data frames
-#' @param test_results a resulting data frame, or a list of data frames
+#' @param code_string A line of code as a string
+#' @param input_data A data frame, a named list, or a URL as a string
+#' @param test_results A data frame or a list of data frames
 #'
-#' @return an instance of regression_analysis class
+#' @return A class_prediction instance
 #' @export
 #'
 #' @examples
@@ -195,13 +195,13 @@ class_prediction <-
     return(class_prediction_inst)
   }
 
-#' Title
+#' Create a class_discovery instance
 #'
-#' @param code_string a line of code as a string
-#' @param input_data an input data frame, or a list of data frames
-#' @param test_results a resulting data frame, or a list of data frames
+#' @param code_string A line of code as a string
+#' @param input_data A data frame, a named list, or a URL as a string
+#' @param test_results A data frame or a list of data frames
 #'
-#' @return an instance of regression_analysis class
+#' @return A class_discovery instance
 #' @export
 #'
 #' @examples
@@ -219,13 +219,13 @@ class_discovery <-
     return(class_discovery_inst)
   }
 
-#' Title
+#' Create a factor_analysis instance
 #'
-#' @param code_string a line of code as a string
-#' @param input_data an input data frame, or a list of data frames
-#' @param test_results a resulting data frame, or a list of data frames
+#' @param code_string A line of code as a string
+#' @param input_data A data frame, a named list, or a URL as a string
+#' @param test_results A data frame or a list of data frames
 #'
-#' @return an instance of regression_analysis class
+#' @return A factor_analysis instance
 #' @export
 #'
 #' @examples
