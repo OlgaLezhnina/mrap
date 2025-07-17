@@ -1,0 +1,5 @@
+linters: linters_with_defaults() # see vignette("lintr")
+encoding: "UTF-8"
+exclusions: list(
+  "tests/testthat/test-utils.R" = list(
+    line_length_linter = Inf))
