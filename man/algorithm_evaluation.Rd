@@ -2,20 +2,20 @@
 % Please edit documentation in R/analytic_instances.R
 \name{algorithm_evaluation}
 \alias{algorithm_evaluation}
-\title{Title}
+\title{Create an algorithm_evaluation instance}
 \usage{
 algorithm_evaluation(code_string, input_data, named_list_results)
 }
 \arguments{
-\item{code_string}{a line of code as a string}
+\item{code_string}{A line of code as a string}
 
-\item{input_data}{an input data frame, or a list of data frames}
+\item{input_data}{A data frame, a named list, or a URL as a string}
 
-\item{named_list_results}{a named list with metrics and values}
+\item{named_list_results}{A named list with metrics and values}
 }
 \value{
-an instance of group_comparison class
+An algorithm_evaluation instance
 }
 \description{
-Title
+Create an algorithm_evaluation instance
 }

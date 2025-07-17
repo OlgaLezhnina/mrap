@@ -2,20 +2,20 @@
 % Please edit documentation in R/analytic_instances.R
 \name{class_prediction}
 \alias{class_prediction}
-\title{Title}
+\title{Create a class_prediction instance}
 \usage{
 class_prediction(code_string, input_data, test_results)
 }
 \arguments{
-\item{code_string}{a line of code as a string}
+\item{code_string}{A line of code as a string}
 
-\item{input_data}{an input data frame, or a list of data frames}
+\item{input_data}{A data frame, a named list, or a URL as a string}
 
-\item{test_results}{a resulting data frame, or a list of data frames}
+\item{test_results}{A data frame or a list of data frames}
 }
 \value{
-an instance of regression_analysis class
+A class_prediction instance
 }
 \description{
-Title
+Create a class_prediction instance
 }

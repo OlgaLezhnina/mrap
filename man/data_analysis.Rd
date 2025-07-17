@@ -2,18 +2,18 @@
 % Please edit documentation in R/analytic_instances.R
 \name{data_analysis}
 \alias{data_analysis}
-\title{Title}
+\title{Create a data_analysis instance}
 \usage{
 data_analysis(instances, code_reference = NULL)
 }
 \arguments{
-\item{instances}{analytic instance or a list of instances}
+\item{instances}{Analytic instance or a list of instances}
 
-\item{code_reference}{a URL of the code implementing data analysis}
+\item{code_reference}{A URL of the code implementing data analysis}
 }
 \value{
-an instance of data analysis class
+A data analysis instance
 }
 \description{
-Title
+Create a data_analysis instance
 }
