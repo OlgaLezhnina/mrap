@@ -13,7 +13,8 @@ add_software_method <- function(dt, pack, fun) {
     paste0(session$R.version$major, ".", session$R.version$minor)
   version_pack <- as.character(utils::packageVersion(pack))
   software <- dt$software(label = "R",
-                          version_info = version_r)
+                          version_info = version_r,
+                          has_support_url = "https://www.r-project.org/")
   software_library <- dt$software_library(label = pack,
                                           version_info = version_pack,
                                           part_of = software)
