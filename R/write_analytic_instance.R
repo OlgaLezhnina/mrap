@@ -2,7 +2,7 @@
 #'
 #' @param dt A datatype loaded with the dtreg package
 #' @param schema_name An analytic schema name as a string
-#' @param code_string A line of code as a string
+#' @param code_string A line of code as a string or "N/A" if not given
 #' @param input_data A data frame, a named list, or a URL as a string
 #'
 #' @return A generic instance to be used by any analytic instance
