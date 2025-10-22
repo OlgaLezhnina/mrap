@@ -15,3 +15,12 @@ JSON string in JSON-LD format
 \description{
 This function is imported from dtreg for ease-of-use
 }
+\examples{
+res <- data.frame(mean = 3.758)
+inst_ds <- descriptive_statistics(
+"base::mean(iris$Petal.Length)",
+iris,
+res
+)
+json <- to_jsonld(inst_ds)
+}

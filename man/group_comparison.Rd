@@ -19,3 +19,11 @@ A group_comparison instance
 \description{
 Create a group_comparison instance
 }
+\examples{
+res <- data.frame(result_1 = 1, result_2 = 2)
+inst_gc <- group_comparison(
+"stats::aov(Petal.Length ~ Species, data = iris)",
+iris,
+res
+)
+}

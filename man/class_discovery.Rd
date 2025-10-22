@@ -19,3 +19,12 @@ A class_discovery instance
 \description{
 Create a class_discovery instance
 }
+\examples{
+clust_data <- iris[-5]
+res <- data.frame(result_1 = 1, result_2 = 2)
+inst_cd <- class_discovery(
+"stats::kmeans(clust_data, 3)",
+iris,
+res
+)
+}

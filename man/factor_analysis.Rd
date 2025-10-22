@@ -19,3 +19,12 @@ A factor_analysis instance
 \description{
 Create a factor_analysis instance
 }
+\examples{
+fa_data <- iris[-5]
+res <- data.frame(result_1 = 1, result_2 = 2)
+inst_fa <- factor_analysis(
+"stats::princomp(fa_data)",
+iris,
+res
+)
+}

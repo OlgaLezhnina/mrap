@@ -19,3 +19,11 @@ A regression_analysis instance
 \description{
 Create a regression_analysis instance
 }
+\examples{
+res <- data.frame(result_1 = 1, result_2 = 2)
+inst_ra <- regression_analysis(
+"stats::lm(Petal.Length ~ Sepal.Length, data = iris)",
+iris,
+res
+)
+}

@@ -17,3 +17,12 @@ A data analysis instance
 \description{
 Create a data_analysis instance
 }
+\examples{
+res <- data.frame(mean = 3.758)
+inst_ds <- descriptive_statistics(
+"base::mean(iris$Petal.Length)",
+iris,
+res
+)
+inst_da <- data_analysis(inst_ds)
+}

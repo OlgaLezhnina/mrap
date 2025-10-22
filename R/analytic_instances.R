@@ -7,6 +7,13 @@
 #' @export
 #'
 #' @examples
+#' res <- data.frame(mean = 3.758)
+#' inst_ds <- descriptive_statistics(
+#' "base::mean(iris$Petal.Length)",
+#' iris,
+#' res
+#' )
+#' inst_da <- data_analysis(inst_ds)
 data_analysis <-
   function(instances, code_reference = NULL) {
     dt <-
@@ -25,6 +32,12 @@ data_analysis <-
 #' @export
 #'
 #' @examples
+#' res <- data.frame(mean = 3.758)
+#' inst_ds <- descriptive_statistics(
+#' "base::mean(iris$Petal.Length)",
+#' iris,
+#' res
+#' )
 descriptive_statistics <-
   function(code_string, input_data, test_results) {
     dt <-
@@ -102,6 +115,12 @@ multilevel_analysis <-
 #' @export
 #'
 #' @examples
+#' res <- data.frame(result_1 = 1, result_2 = 2)
+#' inst_ca <- correlation_analysis(
+#' "stats::cor.test(iris$Petal.Length, iris$Sepal.Length)",
+#' iris,
+#' res
+#' )
 correlation_analysis <-
   function(code_string, input_data, test_results) {
     dt <-
@@ -127,6 +146,12 @@ correlation_analysis <-
 #' @export
 #'
 #' @examples
+#' res <- data.frame(result_1 = 1, result_2 = 2)
+#' inst_gc <- group_comparison(
+#' "stats::aov(Petal.Length ~ Species, data = iris)",
+#' iris,
+#' res
+#' )
 group_comparison <- function(code_string, input_data, test_results) {
   dt <-
     dtreg::load_datatype("https://doi.org/21.T11969/b9335ce2c99ed87735a6")
@@ -151,6 +176,12 @@ group_comparison <- function(code_string, input_data, test_results) {
 #' @export
 #'
 #' @examples
+#' res <- data.frame(result_1 = 1, result_2 = 2)
+#' inst_ra <- regression_analysis(
+#' "stats::lm(Petal.Length ~ Sepal.Length, data = iris)",
+#' iris,
+#' res
+#' )
 regression_analysis <-
   function(code_string, input_data, test_results) {
     dt <-
@@ -178,6 +209,12 @@ regression_analysis <-
 #' @export
 #'
 #' @examples
+#' res <- data.frame(result_1 = 1, result_2 = 2)
+#' inst_cp <- class_prediction(
+#' "stats::glm(Species ~ Petal.Width + Petal.Length, family = 'binomial', data = iris)",
+#' iris,
+#' res
+#' )
 class_prediction <-
   function(code_string, input_data, test_results) {
     dt <-
@@ -205,6 +242,13 @@ class_prediction <-
 #' @export
 #'
 #' @examples
+#' clust_data <- iris[-5]
+#' res <- data.frame(result_1 = 1, result_2 = 2)
+#' inst_cd <- class_discovery(
+#' "stats::kmeans(clust_data, 3)",
+#' iris,
+#' res
+#' )
 class_discovery <-
   function(code_string, input_data, test_results) {
     dt <-
@@ -229,6 +273,13 @@ class_discovery <-
 #' @export
 #'
 #' @examples
+#' fa_data <- iris[-5]
+#' res <- data.frame(result_1 = 1, result_2 = 2)
+#' inst_fa <- factor_analysis(
+#' "stats::princomp(fa_data)",
+#' iris,
+#' res
+#' )
 factor_analysis <-
   function(code_string, input_data, test_results) {
     dt <-

@@ -19,3 +19,11 @@ A correlation_analysis instance
 \description{
 Create a correlation_analysis instance
 }
+\examples{
+res <- data.frame(result_1 = 1, result_2 = 2)
+inst_ca <- correlation_analysis(
+"stats::cor.test(iris$Petal.Length, iris$Sepal.Length)",
+iris,
+res
+)
+}

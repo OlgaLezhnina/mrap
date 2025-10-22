@@ -19,3 +19,11 @@ A descriptive_statistics instance
 \description{
 Create a descriptive_statistics instance
 }
+\examples{
+res <- data.frame(mean = 3.758)
+inst_ds <- descriptive_statistics(
+"base::mean(iris$Petal.Length)",
+iris,
+res
+)
+}
