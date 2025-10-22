@@ -180,7 +180,7 @@ tt <- stats::t.test(setosa, virginica, var.equal = FALSE)
 ```
 The results of the test should be presented as a data frame:
 ```{r}
-df_results = data.frame(
+df_results <- data.frame(
   t.statistic = tt$statistic,
   df = tt$parameter,
   p.value = tt$p.value
