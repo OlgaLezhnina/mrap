@@ -21,7 +21,7 @@ library(mrap)
 
 The goal of mrap is to provide wrapper functions to reduce the user's effort 
 in writing machine-readable data with the [dtreg package](https://cran.r-project.org/package=dtreg).
-The growing set of all-in-one wrappers covers functions from  ``stats`` and other well-known packages. These are very easy to use, see [Example III: an all-in-one wrapper for anova](#section1).
+The set of all-in-one wrappers will be covering functions from  ``stats`` and other well-known packages. These are very easy to use, see [Example III: an all-in-one wrapper for anova](#example3).
 Mrap also contains wrappers for analytical schemata 
 used in the [ORKG-reborn approach](https://reborn.orkg.org/pages/help). This vignette discusses in detail how to apply such a wrapper to write the results of your data analysis as JSON-LD in five steps: 
 
@@ -33,20 +33,23 @@ used in the [ORKG-reborn approach](https://reborn.orkg.org/pages/help). This vig
 
 * Modify the instance by setting or correcting its fields manually.
 
-* Write the finalised instance as a machine-readable JSON-LD file with dtreg. 
+* Write the finalised instance as a machine-readable JSON-LD file. 
 
 ## 1. Select a wrapper
 
+To select a wrapper for an analytical schema, please check the [help page](https://reborn.orkg.org/pages/help). For instance, for a t-test you will need a ``group_comparison`` wrapper.   
+
 ## 2. Check arguments
+The wrappers are very easy in use, when the required arguments are specified correctly, which is crucial for transparent reporting of results. This section explains how to do it.
 
 #### 2.1. Code string
-Argument ``code_string`` should be a string (in R, a character vector). The argument cannot be omitted; please indicate  ``'N/A'`` if this information is not provided.   
+Argument ``code_string`` should be a string (in R, a character vector). The argument cannot be omitted; please indicate  ``'N/A'`` if this information is not provided. In [Example I](#example1), we use the following code string:``'stats::t.test(setosa, virginica, var.equal = FALSE)'``
 
 ##### Package name
 To specify the name of the package in the code is always a good practice. In mrap, we made it a requirement, and you will get an error message if the ``code_string`` does not contain  ``package::function``. In most cases, it is the beginning of the string, but we allow for generic method summary, in this case it is ``summary(package::function(formula))``. For base R, please indicate ``base::``.  
 
 ##### Data name
-If you want mrap to extract the data name from the ``code_string``, please indicate it as ``'data = dataset_name'``, although many R packages also allow for merely ``dataset_name``. If the data name is not detected, it can be added manually to the instance (see Modify the instance). 
+Your data can be a string (URL), a named list, or a data frame (see [Input data](#input) below). In case of a string, you can add the data name manually (see [Modify the instance](#modify)); if your data is a named list, as in [Example I](#example1), mrap easily extracts the elements' names. In these cases, the ``code_string`` does not play a role, and the data name is not specified in it. However, if your data is a single data frame, and you want mrap to extract its name from the ``code_string``, please indicate it as ``'data = dataset_name'``(e.g., ``'data = iris'``), although most R packages allow for merely ``dataset_name``.
 
 ##### Target variable(s)
 Our wrappers extract the name of a target variable from the ``code_string`` if the variable is before the ``~`` sign in the formula:
@@ -76,7 +79,7 @@ You will get a warning reminding to do it.
 ##### Level variable(s)
 In ``code_string``, level variable is recognized by our wrappers in x|level notation. TODO.
 
-#### 2.2. Input data
+#### 2.2. Input data {#input}
 
 Argument ``input_data`` can be:
 
@@ -94,7 +97,7 @@ is.data.frame(iris)
 * a named list for a few vectors or data frames:
 
 ```{r}
-species_list <- list("virginica" = virginica, "versicolor" = versicolor)
+species_list <- list("setosa" = setosa, "virginica" = virginica)
 # check it is a list
 is.list(species_list)
 # check that the list is named
@@ -124,8 +127,105 @@ for (element in my_results) {
 Argument ``named_list_results`` is only used for the ``algorithm_evaluation`` schema.
 
 ## 3. Create an instance
-## 4. Modify the instance
-## 5. Write JSON-LD with dtreg
-## Example I: group comparison
-## Example II: algorithm evaluation
-## Example III: an all-in-one wrapper for anova {#section1}
+
+Now when we know which arguments to use, let us create a ``group_comparison`` instance as in [Example I](#example1): 
+```{r}
+inst_gc <-
+  mrap::group_comparison(
+    "stats::t.test(setosa, virginica, var.equal = FALSE)",
+    list("setosa" = setosa, "virginica" = virginica),
+    df_results
+  )
+```
+Here, the ``code_string`` is a string and contains the package name; there is no need for the data name as the ``input data`` argument is specified as a named list; and the ``test_result`` argument is a data frame. 
+
+## 4. Modify the instance {#modify}
+For the instance specified above, you will receive a warning message: "Target label is not available, you can set it manually". Let us add the target name:
+
+```{r}
+inst_gc$targets <- "Petal.Length"
+```
+This is how you can add or correct any information after creating an instance.
+
+## 5. Include the instance into the overarching ``data_analysis`` instance {#data_analysis}
+The ``data_analysis`` instance should include all analytic instances. 
+For one instance:
+```{r}
+inst_da <- mrap::data_analysis(inst_gc)
+```
+For more than one instance, use a list:
+
+```{r}
+inst_da_all <- mrap::data_analysis(list(inst_preprocessing, inst_regression))
+```
+## 6. Write JSON-LD {#jsonld}
+
+```{r}
+json <- mrap::to_jsonld(inst_da)
+write(json, "data-analysis-1.json")
+```
+
+## Example I: group comparison{#example1}
+Let us assume you conducted a t-test on the Iris data comparing petal length in setosa and virginica species:
+```{r}
+data(iris)
+library(dplyr)
+setosa <- iris |>
+  dplyr::filter(Species == "setosa") |>
+  dplyr::select(Petal.Length)
+virginica <- iris |>
+  dplyr::filter(Species == "virginica") |>
+  dplyr::select(Petal.Length)
+tt <- stats::t.test(setosa, virginica, var.equal = FALSE)
+```
+The results of the test should be presented as a data frame:
+```{r}
+df_results = data.frame(
+  t.statistic = tt$statistic,
+  df = tt$parameter,
+  p.value = tt$p.value
+)
+rownames(df_results) <- "value"
+```
+Now, let us follow the steps described above to create a ``group_comparison`` instance, modify it, include in ``data_analysis`` instance, and write it as a JSON-LD file:
+
+```{r}
+inst_gc <-
+  mrap::group_comparison(
+    "stats::t.test(setosa, virginica, var.equal = FALSE)",
+    list("setosa" = setosa, "virginica" = virginica),
+    df_results
+  )
+
+inst_gc$targets <- "Petal.Length"
+inst_da <- mrap::data_analysis(inst_gc)
+json <- mrap::to_jsonld(inst_da)
+write(json, "data-analysis-1.json")
+```
+
+
+## Example II: algorithm evaluation {#example2}
+## Example III: an all-in-one wrapper for anova {#example3}
+Currently, mrap contains an all-in-one wrapper for ``stats::aov`` function, and more such wrappers will be added in the future. Let us assume you are currently using ``stats::aov`` for conducting your ANOVA tests:  
+
+```{r}
+data(iris)
+anova_stats_results <- stats::aov(Petal.Length ~ Species, data = iris)
+```
+The all-in-one wrapper is as easy in use as the original function: 
+```{r}
+aov <- mrap::stats_aov(Petal.Length ~ Species, data = iris)
+```
+The wrapper returns a list, the first element of which is the resulting object from the original function: 
+```{r}
+anova_mrap_results <- aov$anova
+```
+The second element is a ``group_comparison`` instance: 
+```{r}
+inst_gc_anova <- aov$dtreg_object
+```
+The instance includes all required information. Of course, there is still a possibility to modify it, e.g., to add a label: 
+```{r}
+inst_gc_anova$label <- "my_fancy_results"
+```
+This can be further included in the [data_analysis](#data_analysis) instance and written as [JSON-LD file](#jsonld) as explained above. 
