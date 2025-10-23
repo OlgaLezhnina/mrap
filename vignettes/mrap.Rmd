@@ -42,8 +42,8 @@ To select a wrapper for an analytical schema, please check the [help page](https
 ## 2. Check arguments
 The wrappers are very easy in use, when the required arguments are specified correctly, which is crucial for transparent reporting of results. This section explains how to do it.
 
-#### 2.1. Code string
-Argument ``code_string`` should be a string (in R, a character vector). The argument cannot be omitted; please indicate  ``'N/A'`` if this information is not provided. In [Example I](#example1), we use the following code string:``'stats::t.test(setosa, virginica, var.equal = FALSE)'``
+#### 2.1. Code string {#code_string}
+Argument ``code_string`` should be a string (in R, a character vector). The argument cannot be omitted; please indicate  "N/A" if this information is not provided. In [Example I](#example1), we use the following code string:``'stats::t.test(setosa, virginica, var.equal = FALSE)'``
 
 ##### Package name
 To specify the name of the package in the code is always a good practice. In mrap, we made it a requirement, and you will get an error message if the ``code_string`` does not contain  ``package::function``. In most cases, it is the beginning of the string, but we allow for generic method summary, in this case it is ``summary(package::function(formula))``. For base R, please indicate ``base::``.  
@@ -205,6 +205,24 @@ write(json, "data-analysis-1.json")
 
 
 ## Example II: algorithm evaluation {#example2}
+To report an algorithm performance, you write the evaluation results as a named list:
+
+```{r}
+eval_results <- list(F1 = 0.46, recall = 0.51)
+```
+Typically, there is no specific line of code to report as ``code_string``, therefore "N/A" is allowed, as explained in the [Code string](#code_string) section above. The data is reported as a URL string: 
+
+```{r}
+inst_ae <- algorithm_evaluation("N/A", "data_url", eval_results)
+```
+You need to add the name of the algorithm and the task manually:
+
+```{r}
+inst_ae$evaluates <- "my_algorithm_name"
+inst_ae$evaluates_for <- "Classification"
+```
+This can be further included in the [data_analysis](#data_analysis) instance and written as [JSON-LD file](#jsonld) as explained above. 
+
 ## Example III: an all-in-one wrapper for anova {#example3}
 Currently, mrap contains an all-in-one wrapper for ``stats::aov`` function, and more such wrappers will be added in the future. Let us assume you are currently using ``stats::aov`` for conducting your ANOVA tests:  
 

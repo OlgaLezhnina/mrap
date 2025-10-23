@@ -19,3 +19,7 @@ An algorithm_evaluation instance
 \description{
 Create an algorithm_evaluation instance
 }
+\examples{
+res <- list(F1= 0.46, recall = 0.51)
+inst_ae <- algorithm_evaluation("N/A", "data_url", res)
+}
