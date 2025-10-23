@@ -25,8 +25,14 @@ write_stats_aov <- function(aov_object) {
   sum_object <- summary(aov_object)[[1]]
   dt <-
     dtreg::load_datatype("https://doi.org/21.T11969/b9335ce2c99ed87735a6")
-  software_method <- add_software_method(dt, "stats", "aov")
-  software_method$is_implemented_by <- deparse(aov_object$call)
+  code_string <- paste0("stats::aov(",
+                        target_name,
+                        " ~ ",
+                        group_name,
+                        ", data = ",
+                        data_name,
+                        ")")
+  software_method <- add_software_method(dt, code_string)
   dim_input <-
     dt$matrix_size(
       number_of_rows = nrow(aov_object$model),

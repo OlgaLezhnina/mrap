@@ -15,12 +15,11 @@ write_analytic_instance <-
            input_data) {
     check_argument(code_string)
     check_argument(input_data)
-    parts <- parse_code_string(code_string)
     software_method <-
-      add_software_method(dt, parts$pack, parts$fun)
-    software_method$is_implemented_by <- code_string
+      add_software_method(dt, code_string)
     input <- add_input(dt, input_data)
-    if (!is.list(input)) {
+    if (is.data.frame(input_data)) {
+      parts <- parse_code_string(code_string)
       input$label  <- parts$data_name
     }
     instance <- dt[[schema_name]](label = schema_name,
