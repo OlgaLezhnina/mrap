@@ -24,7 +24,7 @@ data_analysis <-
   }
 #' Create a descriptive_statistics instance
 #'
-#' @param code_string A line of code as a string
+#' @param code_string A line of code as a string, or "N/A" if not given
 #' @param input_data A data frame, a named list, or a URL as a string
 #' @param test_results A data frame or a list of data frames
 #'
@@ -54,7 +54,7 @@ descriptive_statistics <-
 
 #' Create an algorithm_evaluation instance
 #'
-#' @param code_string A line of code as a string
+#' @param code_string A line of code as a string, or "N/A" if not given
 #' @param input_data A data frame, a named list, or a URL as a string
 #' @param named_list_results A named list with metrics and values
 #'
@@ -82,7 +82,7 @@ algorithm_evaluation <-
 
 #' Create a multilevel_analysis instance
 #'
-#' @param code_string A line of code as a string
+#' @param code_string A line of code as a string, or "N/A" if not given
 #' @param input_data A data frame, a named list, or a URL as a string
 #' @param test_results A data frame or a list of data frames
 #'
@@ -109,7 +109,7 @@ multilevel_analysis <-
 
 #' Create a correlation_analysis instance
 #'
-#' @param code_string A line of code as a string
+#' @param code_string A line of code as a string, or "N/A" if not given
 #' @param input_data A data frame, a named list, or a URL as a string
 #' @param test_results A data frame or a list of data frames
 #'
@@ -140,7 +140,7 @@ correlation_analysis <-
 
 #' Create a group_comparison instance
 #'
-#' @param code_string A line of code as a string
+#' @param code_string A line of code as a string, or "N/A" if not given
 #' @param input_data A data frame, a named list, or a URL as a string
 #' @param test_results A data frame or a list of data frames
 #'
@@ -170,7 +170,7 @@ group_comparison <- function(code_string, input_data, test_results) {
 
 #' Create a regression_analysis instance
 #'
-#' @param code_string A line of code as a string
+#' @param code_string A line of code as a string, or "N/A" if not given
 #' @param input_data A data frame, a named list, or a URL as a string
 #' @param test_results A data frame or a list of data frames
 #'
@@ -203,7 +203,7 @@ regression_analysis <-
 
 #' Create a class_prediction instance
 #'
-#' @param code_string A line of code as a string
+#' @param code_string A line of code as a string, or "N/A" if not given
 #' @param input_data A data frame, a named list, or a URL as a string
 #' @param test_results A data frame or a list of data frames
 #'
@@ -236,7 +236,7 @@ class_prediction <-
 
 #' Create a class_discovery instance
 #'
-#' @param code_string A line of code as a string
+#' @param code_string A line of code as a string, or "N/A" if not given
 #' @param input_data A data frame, a named list, or a URL as a string
 #' @param test_results A data frame or a list of data frames
 #'
@@ -267,7 +267,7 @@ class_discovery <-
 
 #' Create a factor_analysis instance
 #'
-#' @param code_string A line of code as a string
+#' @param code_string A line of code as a string, or "N/A" if not given
 #' @param input_data A data frame, a named list, or a URL as a string
 #' @param test_results A data frame or a list of data frames
 #'

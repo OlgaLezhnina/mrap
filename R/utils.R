@@ -45,7 +45,7 @@ find_target_name <- function(argument_string) {
 
 #' Parse code_string to get names it contains
 #'
-#' @param code_string A line of code as a string
+#' @param code_string A line of code as a string, or "N/A" if not given
 #' @return A named list with strings
 #' @noRd
 #'

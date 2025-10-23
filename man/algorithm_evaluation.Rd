@@ -7,7 +7,7 @@
 algorithm_evaluation(code_string, input_data, named_list_results)
 }
 \arguments{
-\item{code_string}{A line of code as a string}
+\item{code_string}{A line of code as a string, or "N/A" if not given}
 
 \item{input_data}{A data frame, a named list, or a URL as a string}
 

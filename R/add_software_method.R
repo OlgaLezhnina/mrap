@@ -1,7 +1,7 @@
 #' Add a software method instance
 #'
 #' @param dt A datatype loaded with the dtreg package
-#' @param code_string A line of code as a string
+#' @param code_string A line of code as a string, or "N/A" if not given
 #'
 #' @return A software_method instance
 #' @noRd
