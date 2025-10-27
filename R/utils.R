@@ -43,6 +43,22 @@ find_target_name <- function(argument_string) {
   return(target_name)
 }
 
+#' Get level_name for parse_code_string function
+#'
+#' @param argument_string A substring of the code_string
+#' @return A level_name as a string
+#' @noRd
+#
+find_level_name <- function(argument_string) {
+  if (!stringr::str_detect(argument_string, "[|]")) {
+    level_name <- NA
+  } else {
+    level_name <-
+      stringr::str_match(argument_string, "[|]([\\w.]+)")[2]
+  }
+  return(level_name)
+}
+
 #' Parse code_string to get names it contains
 #'
 #' @param code_string A line of code as a string, or "N/A" if not given

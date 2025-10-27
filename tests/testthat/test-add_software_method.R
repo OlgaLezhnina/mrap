@@ -15,3 +15,9 @@ test_that("add_software_method writes the software library label correctly", {
   sw_method_inst <- add_software_method(dt, "stats::aov(Petal.Length ~ Species, data = iris)")
   expect_equal(sw_method_inst$part_of$label, "stats")
 })
+
+test_that("add_software_method writes the method for 'N/A' as code_string", {
+  dt <- dtreg::load_datatype("https://doi.org/21.T11969/b9335ce2c99ed87735a6")
+  sw_method_inst <- add_software_method(dt, "N/A")
+  expect_equal(sw_method_inst$part_of$label, "R")
+})
