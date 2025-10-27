@@ -53,7 +53,7 @@ find_level_name <- function(argument_string) {
   if (!stringr::str_detect(argument_string, "[|]")) {
     level_name <- NA
   } else {
-    splits <- stringr::str_match_all(wtf, "[|]([\\w.]+)")[[1]][, 2]
+    splits <- stringr::str_match_all(argument_string, "[|]([\\w.]+)")[[1]][, 2]
     if (length(splits) == 1) {
       level_name <- splits
     } else {
