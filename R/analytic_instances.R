@@ -90,6 +90,9 @@ algorithm_evaluation <-
 #' @export
 #'
 #' @examples
+#' code_string <- "lme4::lmer(math ~ homework + (1 | schid))"
+#' res <- data.frame(result_1 = 1, result_2 = 2)
+#' inst <- multilevel_analysis(code_string, "data_url", res)
 multilevel_analysis <-
   function(code_string, input_data, test_results) {
     dt <-

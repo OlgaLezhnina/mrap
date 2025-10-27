@@ -19,3 +19,8 @@ A multilevel_analysis instance
 \description{
 Create a multilevel_analysis instance
 }
+\examples{
+code_string <- "lme4::lmer(math ~ homework + (1 | schid))"
+res <- data.frame(result_1 = 1, result_2 = 2)
+inst <- multilevel_analysis(code_string, "data_url", res)
+}

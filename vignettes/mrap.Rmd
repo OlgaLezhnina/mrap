@@ -77,7 +77,18 @@ In the following case we cannot extract the name, and you can add the target lab
 You will get a warning reminding to do it. 
 
 ##### Level variable(s)
-In ``code_string``, level variable is recognized by our wrappers in x|level notation. TODO.
+In ``code_string``, level variable is recognized by our wrappers in "x | level" or "x || level" syntax:
+
+```{r}
+"lme4::lmer(Reaction ~ Days + (Days | Subject), data = sleepstudy)"
+"lme4::lmer(Reaction ~ Days + (Days || Subject), data = sleepstudy)"
+```
+More than one level is possible, too:
+```{r}
+"lme4::lmer(math ~ homework + (1 | schid) + (1 | classid))"
+
+```
+If we cannot extract the name, you will get a warning reminding you to add the level label manually to the instance.
 
 #### 2.2. Input data {#input}
 
