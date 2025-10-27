@@ -80,7 +80,7 @@ parse_code_string <- function(code_string) {
   internal_args <- first_split[4]
   result[["data_name"]] <-
     stringr::str_match(internal_args, "data=([\\w.]+)")[2]
-  result[["level_name"]] <- "TODO"
+  result[["level_name"]] <- find_level_name(internal_args)
   result[["target_name"]] <- find_target_name(internal_args)
   return(result)
 }
