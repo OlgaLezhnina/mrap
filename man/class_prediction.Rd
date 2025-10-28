@@ -22,7 +22,7 @@ Create a class_prediction instance
 \examples{
 res <- data.frame(result_1 = 1, result_2 = 2)
 inst_cp <- class_prediction(
-"stats::glm(Species ~ Petal.Width + Petal.Length, family = 'binomial', data = iris)",
+"stats::glm(Species ~ Petal.Width + Petal.Length, family='binomial', iris)",
 iris,
 res
 )

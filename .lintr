@@ -3,5 +3,9 @@ encoding: "UTF-8"
 exclusions: list(
   "tests/testthat/test-utils.R" = list(
     line_length_linter = Inf),
+  "tests/testthat/test-add_software_method.R" = list(
+    line_length_linter = Inf),
   "tests/testthat/test-add_target.R" = list(
+    line_length_linter = Inf),
+  "tests/testthat/test-add_level.R" = list(
     line_length_linter = Inf))
