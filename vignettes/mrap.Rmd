@@ -83,10 +83,13 @@ In ``code_string``, level variable is recognized by our wrappers in "x | level" 
 "lme4::lmer(Reaction ~ Days + (Days | Subject), data = sleepstudy)"
 "lme4::lmer(Reaction ~ Days + (Days || Subject), data = sleepstudy)"
 ```
-More than one level is possible, too:
+A level can be written more than once in a formula, mrap recognizes it:
+```{r}
+"lme4::lmer(math ~ homework + (homework | schid) + (class_size | schid))"
+```
+More than one level is possible, mrap will capture all level names:
 ```{r}
 "lme4::lmer(math ~ homework + (1 | schid) + (1 | classid))"
-
 ```
 If we cannot extract the name, you will get a warning reminding you to add the level label manually to the instance.
 

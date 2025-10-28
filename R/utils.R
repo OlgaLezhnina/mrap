@@ -53,11 +53,12 @@ find_level_name <- function(argument_string) {
   if (!stringr::str_detect(argument_string, "[|]")) {
     level_name <- NA
   } else {
-    splits <- stringr::str_match_all(argument_string, "[|]([\\w.]+)")[[1]][, 2]
-    if (length(splits) == 1) {
-      level_name <- splits
+    unique_splits <-
+      unique(stringr::str_match_all(argument_string, "[|]([\\w.]+)")[[1]][, 2])
+    if (length(unique_splits) == 1) {
+      level_name <- unique_splits
     } else {
-      level_name <- as.list(stringr::str_split(splits, "\\s+"))
+      level_name <- as.list(stringr::str_split(unique_splits, "\\s+"))
     }
   }
   return(level_name)
