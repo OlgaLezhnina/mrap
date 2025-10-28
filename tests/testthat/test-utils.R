@@ -56,7 +56,25 @@ test_that("parse_code_string extracts target name if the same in vectors", {
   expect_equal(result$target_name, "Petal.Length")
 })
 
-test_that("parse_code_string seees no target name if different in vectors", {
+test_that("parse_code_string sees no target name if different in vectors", {
   result <- parse_code_string("stats::t.test(setosa$Sepal.Length, virginica$Petal.Length)")
   expect_equal(result$target_name, NA)
+})
+
+test_that("parse_code_string extracts level name when repetitive", {
+  result <-
+    parse_code_string("lme4::lmer(math ~ homework + (class_size | schid) + (homework | schid))")
+  expect_equal(result$level_name, "schid")
+})
+
+test_that("parse_code_string extracts multiple level names", {
+  result <-
+    parse_code_string("lme4::lmer(math ~ homework + (class_size | schid) + (homework | classid))")
+  expect_equal(result$level_name, list("schid", "classid"))
+})
+
+test_that("parse_code_string sees no level name when no level", {
+  result <-
+    parse_code_string("lme4::lmer(math ~ homework + class_size))")
+  expect_equal(result$level_name, NA)
 })
