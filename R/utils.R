@@ -33,7 +33,7 @@ find_target_name <- function(argument_string) {
     splits <- stringr::str_split(argument_string, ",")[[1]]
     second_parts <-
       unique(lapply(splits, function(x) stringr::str_match(x, "\\$(.*)")[2]))
-    finals <-  second_parts[!is.na(second_parts)]
+    finals <- second_parts[!is.na(second_parts)]
     if (length(finals) == 1) {
       target_name <- finals[[1]]
     } else {
@@ -65,6 +65,7 @@ find_level_name <- function(argument_string) {
 }
 
 #' Parse code_string to get names it contains
+#' package, function, data, target, level, or "N/A" if not extractable
 #'
 #' @param code_string A line of code as a string, or "N/A" if not given
 #' @return A named list with strings
