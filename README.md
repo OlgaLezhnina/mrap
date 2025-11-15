@@ -16,10 +16,10 @@ well-known packages.
 
 ## Installation
 
-The easiest way is to install dtreg from CRAN:
+The easiest way is to install mrap from CRAN:
 
 ``` r
-install.packages("dtreg")
+install.packages("mrap")
 ```
 
 You can install the development version of mrap with:
