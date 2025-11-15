@@ -21,9 +21,9 @@ library(mrap)
 
 The goal of mrap is to provide wrapper functions to reduce the user's effort 
 in writing machine-readable data with the [dtreg package](https://cran.r-project.org/package=dtreg).
-The set of all-in-one wrappers will be covering functions from  ``stats`` and other well-known packages. These are very easy to use, see [Example III: an all-in-one wrapper for anova](#example3).
-Mrap also contains wrappers for analytical schemata 
-used in the [ORKG-reborn approach](https://reborn.orkg.org/pages/help). This vignette discusses in detail how to apply such a wrapper to write the results of your data analysis as JSON-LD in five steps: 
+The set of all-in-one wrappers will cover functions from  ``stats`` and other well-known packages. These are very easy to use, see [Example III: an all-in-one wrapper for anova](#example3).
+The package also contains wrappers for analytical schemata 
+used by [TIB Knowledge Loom](https://knowledgeloom.tib.eu/). This vignette discusses in detail how to apply such a wrapper to write the results of your data analysis as JSON-LD in five steps: 
 
 * Select a wrapper for the schema you will use.
 
@@ -37,7 +37,7 @@ used in the [ORKG-reborn approach](https://reborn.orkg.org/pages/help). This vig
 
 ## 1. Select a wrapper
 
-To select a wrapper for an analytical schema, please check the [help page](https://reborn.orkg.org/pages/help). For instance, for a t-test you will need a ``group_comparison`` wrapper.   
+To select a wrapper for an analytical schema, please check the [help page](https://knowledgeloom.tib.eu/pages/help). For instance, for a t-test you will need a ``group_comparison`` wrapper.   
 
 ## 2. Check arguments
 The wrappers are very easy in use, when the required arguments are specified correctly, which is crucial for transparent reporting of results. This section explains how to do it.
@@ -83,7 +83,7 @@ In ``code_string``, level variable is recognized by our wrappers in "x | level" 
 "lme4::lmer(Reaction ~ Days + (Days | Subject), data = sleepstudy)"
 "lme4::lmer(Reaction ~ Days + (Days || Subject), data = sleepstudy)"
 ```
-A level can be written more than once in a formula, mrap recognizes it:
+A level can be written more than once in a formula, in this case mrap also recognizes it:
 ```{r}
 "lme4::lmer(math ~ homework + (homework | schid) + (class_size | schid))"
 ```
