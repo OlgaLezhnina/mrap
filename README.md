@@ -6,6 +6,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
+**100% AI-free: we did not use any AI technologies in developing this
+package.**
+
 The goal of mrap is to provide wrapper functions to reduce the user’s
 effort in writing machine-readable data with the [dtreg
 package](https://cran.r-project.org/package=dtreg). Analytical wrappers

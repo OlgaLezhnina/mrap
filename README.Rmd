@@ -18,6 +18,10 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
+
+**100% AI-free: we did not use any AI technologies in developing this package.**
+
+
 The goal of mrap is to provide wrapper functions to reduce the user's effort in writing machine-readable data  with the [dtreg package](https://cran.r-project.org/package=dtreg). Analytical wrappers facilitate writing the data with the schemata used by [TIB Knowledge Loom](https://knowledgeloom.tib.eu/). All-in-one wrappers (currently, ``mrap::stats_aov``) will cover functions from  ``stats`` and other well-known packages.     
 
 ## Installation
