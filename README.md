@@ -40,7 +40,7 @@ For instance, you conducted ANOVA on Iris data.
 ``` r
 library(mrap)
 attach(iris)
-my_anova <- stats::aov(Petal.Length ~ Species, iris)
+my_anova <- stats::aov(Petal.Length ~ Species, data = iris)
 my_results <- summary(my_anova)[[1]]
 ```
 
@@ -55,7 +55,7 @@ inst_gc <-
   mrap::group_comparison("stats::aov(Petal.Length ~ Species, data = iris)",
                          iris,
                          my_results)
-                         my_json <- mrap::to_jsonld(inst_da)
+my_json <- mrap::to_jsonld(inst_da)
 ```
 
 Alternatively, you can use the all-in-one wrapper for `stats::aov`
