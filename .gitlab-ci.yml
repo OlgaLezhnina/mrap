@@ -1,5 +1,5 @@
 test-unit:
-  image: rocker/r-base
+  image: rocker/r-ver:4.3
   script:
     - R -q -e 'install.packages("remotes")'
     - R -q -e 'install.packages("covr")'
