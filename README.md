@@ -4,6 +4,8 @@
 # mrap
 
 <!-- badges: start -->
+
+![coverage](https://gitlab.com/TIBHannover/lki/knowledge-loom/mrap-r/badges/master/coverage.svg)
 <!-- badges: end -->
 
 **100% AI-free: we did not use any AI technologies in developing this

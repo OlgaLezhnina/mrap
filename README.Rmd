@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # mrap
 
 <!-- badges: start -->
+![coverage](https://gitlab.com/TIBHannover/lki/knowledge-loom/mrap-r/badges/master/coverage.svg)
 <!-- badges: end -->
 
 
