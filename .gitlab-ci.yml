@@ -1,4 +1,5 @@
 test-unit:
+  image: posit/r-base
   script:
     - Rscript -e 'cat(paste0(covr::percent_coverage(covr::package_coverage()), "%"))'
   coverage: '/([0-9]{1,3}%)/'
