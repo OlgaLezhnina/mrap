@@ -1,6 +1,6 @@
 test-unit:
-  image: rocker/tidyverse
+  image: rocker/r-base
   script:
-    - Rscript -e 'install.packages("covr")' > /dev/null
+    - R -e "remotes::install_deps(dependencies = TRUE)"
     - Rscript -e 'cat(paste0(covr::percent_coverage(covr::package_coverage()), "%"))'
   coverage: '/([0-9]{1,3}%)/'
