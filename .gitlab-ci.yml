@@ -1,4 +1,4 @@
 test-unit:
   script:
     - Rscript -e 'cat(paste0(covr::percent_coverage(covr::package_coverage()), "%"))'
-  coverage: '([0-9]{1,3}%)'
+  coverage: '/([0-9]{1,3}%)/'
