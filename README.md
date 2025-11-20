@@ -34,7 +34,7 @@ You can install the development version of mrap with:
 ``` r
 # install.packages("devtools")
 library(devtools)
-# devtools::install_gitlab("TIBHannover/TODO", build_vignettes = TRUE)
+devtools::install_gitlab("TIBHannover/lki/knowledge-loom/mrap-r", build_vignettes = TRUE)
 ```
 
 ## Example
