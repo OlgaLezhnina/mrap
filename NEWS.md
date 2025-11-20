@@ -1,3 +1,3 @@
-# mrap (development version)
+# mrap 1.0.0
 
 * Initial CRAN submission.
