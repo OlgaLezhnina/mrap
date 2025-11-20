@@ -4,3 +4,4 @@
 ^README\.Rmd$
 ^\.lintr$
 ^\.gitlab-ci\.yml$
+^cran-comments\.md$
