@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 ![coverage](https://gitlab.com/TIBHannover/lki/knowledge-loom/mrap-r/badges/master/coverage.svg)
+[![CRAN status](https://www.r-pkg.org/badges/version/mrap)](https://CRAN.R-project.org/package=mrap)
 <!-- badges: end -->
 
 
