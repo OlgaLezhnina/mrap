@@ -1,5 +1,5 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | NOTE Maintainer: 'Markus Stocker markus.stocker@tib.eu'
 
-* This is a new release.
+New maintainer: Markus Stocker markus.stocker@tib.eu Old maintainer(s): Olga Lezhnina olga.lezhnina@tib.eu
