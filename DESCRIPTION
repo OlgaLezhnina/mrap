@@ -1,6 +1,6 @@
 Package: mrap
 Title: Machine-Readable Data Analysis Results with Function Wrappers
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: c(
     person("Olga", "Lezhnina", , "olga.lezhnina@tib.eu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-2237-7725")),
